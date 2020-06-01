@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:state_provider/counter.dart';
+import 'package:state_provider/state_provider/counter.dart';
 
-class secondPage extends StatelessWidget {
+class SecondPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -21,7 +21,7 @@ class secondPage extends StatelessWidget {
           child: new Text('回到上一页'),
         ),
         Consumer<Counter>(
-              builder:(context, counter, child) => Text('${counter.value}', style: Theme.of(context).textTheme.headline4,), 
+              builder:(context, counter, child) => Text('${Counter.value}', style: Theme.of(context).textTheme.headline4,), 
             ),
         ],),
       ),
