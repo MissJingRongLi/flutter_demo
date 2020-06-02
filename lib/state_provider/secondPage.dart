@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:state_provider/async_ui/future_bd.dart';
 import 'package:state_provider/state_provider/counter.dart';
 
 class SecondPage extends StatelessWidget {
@@ -19,6 +20,13 @@ class SecondPage extends StatelessWidget {
             Navigator.pop(context);
           },
           child: new Text('回到上一页'),
+        ),
+          new RaisedButton(
+          onPressed: () {
+            // Navigate back to first screen when tapped!
+            Navigator.push(context, new MaterialPageRoute(builder: (context) => new FutureBd()));
+          },
+          child: new Text('future build'),
         ),
         Consumer<Counter>(
               builder:(context, counter, child) => Text('${Counter.value}', style: Theme.of(context).textTheme.headline4,), 
