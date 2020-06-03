@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:state_provider/flex/flex.dart';
+import 'package:state_provider/overlay/overlayDemo.dart';
 import 'package:state_provider/state_provider/secondPage.dart';
 import 'package:state_provider/state_provider/counter.dart';
+import 'package:state_provider/toastDemo/toastDiy.dart';
 
 
 class FirstPage extends StatefulWidget {
@@ -41,6 +44,32 @@ class _FirstPageState extends State<FirstPage> {
               },
               child: new Text('跳转下一页'),
               ),
+            RaisedButton(
+              onPressed: (){
+                Navigator.push(context, new MaterialPageRoute(builder: (context) => new FlexLayout()));
+              },
+              child: new Text('测试flex布局'),
+              ),
+            Row(children: <Widget>[
+              RaisedButton(
+              onPressed: (){
+                MyToast.Info(context, msg: '第一个Toast');
+              },
+              child: new Text('Toast1'),
+              ),
+              RaisedButton(
+              onPressed: (){
+                MyToast.Info(context, msg: '第二个Toast');
+              },
+              child: new Text('Toast2'),
+              ),
+              RaisedButton(
+              onPressed: (){
+                MyToast.Info(context, msg: '第三个Toast');
+              },
+              child: new Text('Toast3'),
+              ),
+            ],)
           ],
         ),
       ),

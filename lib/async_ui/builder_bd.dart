@@ -1,24 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:state_provider/overlay/overlayDemo.dart';
 
 Stream<int> counter() {
   return Stream.periodic(Duration(seconds: 1), (i) {
     return i;
   });
-}
-
-class BuildBd extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: new Column(
-        mainAxisAlignment:MainAxisAlignment.center,
-        children: <Widget>[
-          new Text('See Below...'),
-          BuildBdInside()
-        ],
-      )
-    );
-  }
 }
 
 class BuildBdInside extends StatelessWidget {
@@ -38,7 +24,18 @@ class BuildBdInside extends StatelessWidget {
             case ConnectionState.waiting:
               return Text('等待数据...');
             case ConnectionState.active:
-              return Text('active: ${snapshot.data}');
+              return Container(
+                child: Row(
+                  children: <Widget>[
+                    Text('active: ${snapshot.data}'),
+                    RaisedButton(onPressed: (){
+                       MyToast.Info(context, msg: '${snapshot.data}');
+                    },
+                    child: new Text('提示Toast'),
+                    )
+                  ],
+                ),
+              );
             case ConnectionState.done:
               return Text('Stream已关闭');
           }
@@ -47,5 +44,19 @@ class BuildBdInside extends StatelessWidget {
       ),
     )
     ],);
+  }
+}
+class BuildBd extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: new Column(
+        mainAxisAlignment:MainAxisAlignment.center,
+        children: <Widget>[
+          new Text('See Below...'),
+          BuildBdInside(),
+        ],
+      )
+    );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:oktoast/oktoast.dart';
 import 'package:provider/provider.dart';
 import 'package:state_provider/state_provider/counter.dart';
 import 'package:state_provider/state_provider/firstPage.dart';
@@ -20,7 +21,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider.value(
+    return OKToast(
+      child: ChangeNotifierProvider.value(
       // ChangeNotifierProvider返回一个widget 为FirstPage与SecondPage的父节点
       value: counter, 
           child: MaterialApp(
@@ -30,6 +32,7 @@ class MyApp extends StatelessWidget {
         ),
         home: FirstPage(title: 'First Page'),
       ),
+    )
     );
   }
 }
