@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:state_provider/flex/flex.dart';
 import 'package:state_provider/overlay/overlayDemo.dart';
+import 'package:state_provider/provider/demo2.dart';
+import 'package:state_provider/provider/demo3.dart';
+import 'package:state_provider/provider/demo4.dart';
 import 'package:state_provider/state_provider/secondPage.dart';
 import 'package:state_provider/state_provider/counter.dart';
-import 'package:state_provider/toastDemo/toastDiy.dart';
 
 
 class FirstPage extends StatefulWidget {
@@ -69,7 +71,13 @@ class _FirstPageState extends State<FirstPage> {
               },
               child: new Text('Toast3'),
               ),
-            ],)
+            ],),
+              RaisedButton(
+              onPressed: (){
+                Navigator.push(context, new MaterialPageRoute(builder: (context) => new Demo4()));
+              },
+              child: new Text('测试Provider'),
+              ),
           ],
         ),
       ),
